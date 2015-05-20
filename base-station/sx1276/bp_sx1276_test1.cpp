@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 	long faultCount = 0;
   while (true) {
 		total++;
-    if (radio.SendSimpleMessage(msg)) { printf("."); fflush(stdout); radio.StandbyMode(); usleep(200000); continue; }
+    if (radio.SendSimpleMessage(msg)) { printf("."); fflush(stdout); /*radio.StandbyMode(); usleep(200000); */ continue; }
 		radio.StandbyMode();
 		printf("\n");
 		faultCount++;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 		printf("Predicted time on air: %fs\n", radio.PredictTimeOnAir(msg));
 		spi->AssertReset();
 	  radio.ApplyDefaultLoraConfiguration();
-		usleep(500000);
+		usleep(2000000);
   }
   return 1;
 }

@@ -184,12 +184,13 @@ bool SX1276Radio::ApplyDefaultLoraConfiguration()
   // say approx 0.45 seconds for a 8+4 preamble
 
   // 125kHz, 4/6, explicit header
-  v = (SX1276_LORA_BW_125000 << 4) | (SX1276_LORA_CODING_RATE_4_6) | 0x0;
+  v = (SX1276_LORA_BW_62500 << 4) | (SX1276_LORA_CODING_RATE_4_6) | 0x0;
   WriteRegisterVerify(SX1276REG_ModemConfig1, v);
 
   // SF9, normal (not continuous) mode, CRC, and upper 2 bits of symbol timeout (maximum i.e. 1023)
   // We use 255, or 255 x (2^9)/125000 or ~1 second
-  v = (0x9 << 4) | (0 << 3)| (1 << 2) | 0x0;
+	int cc=0;
+  v = (0x9 << 4) | (cc << 3)| (1 << 2) | 0x0;
   WriteRegisterVerify(SX1276REG_ModemConfig2, v);
   v = 0xff;
   WriteRegisterVerify(SX1276REG_SymbTimeoutLsb, v);
@@ -235,7 +236,7 @@ bool SX1276Radio::ApplyDefaultLoraConfiguration()
 
 float SX1276Radio::PredictTimeOnAir(const char *payload) const
 {
-  unsigned BW = 125000;
+  unsigned BW = 62500;
   unsigned SF = 9;
   float toa = (6.F+4.25F+8+ceil( (8*(strlen(payload)+1)-4*SF+28+16)/(4*SF))*6.F) * (1 << SF) / BW;
   return toa;
@@ -283,7 +284,7 @@ bool SX1276Radio::SendSimpleMessage(const char *payload)
 	}
 
   // TX mode
-  WriteRegisterVerify(SX1276REG_IrqFlagsMask, 0x08);
+  WriteRegisterVerify(SX1276REG_IrqFlagsMask, 0x0);
   spi_->WriteRegister(SX1276REG_IrqFlags, 0xff); // cant verify; clears on 0xff write
   WriteRegisterVerify(SX1276REG_OpMode, 0x83);
   if (fault_) { PR_ERROR("Unable to enter TX mode\n"); spi_->ReadRegister(SX1276REG_IrqFlags, v); return false; }
@@ -295,10 +296,9 @@ bool SX1276Radio::SendSimpleMessage(const char *payload)
   steady_clock::time_point t1 = t0 + boost::chrono::milliseconds(1000); // 1 second is way overkill
   bool done = false;
   do {
-		v = 0x5a;
     if (!ReadRegisterHarder(SX1276REG_IrqFlags, v, 4)) break;
-    if (v & 0x08) {
-      usleep(1000);
+    if (!(v & 0x08)) {
+      usleep(10);
     } else {
       done = true;
       break;
