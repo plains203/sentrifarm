@@ -82,4 +82,4 @@ Many existing farm systems are:
 * very expensive for what you get, or
 * use proprietary protocols and lock up data away from the farmer, or
 
-Farmers are very busy people.  Some may have the skill, motivation or expertise to maintain a sensor deployment, and the open source nature of the system provides that opportunity for them.  For the vast majority, they would rather outsouce the installation and ongoing service, providing a local business opportunity on the ground that is harder to be stolen or locked up by a multinational, unlike large scale tractor systems.
+Farmers are very busy people.  Some may have the skill, motivation or expertise to maintain a sensor deployment, and the open source nature of the system provides that opportunity for them.  For the vast majority, they would rather outsouce the installation and ongoing service, providing a local business opportunity on the ground that is harder to be overtaken or locked up by a multinational (case in point: proprietary CAN bus systems in tractors)
