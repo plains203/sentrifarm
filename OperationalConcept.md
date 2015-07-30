@@ -30,15 +30,6 @@ destroying unharvested crop and able to morph into a full scale bushfire if farm
 
 The modern farmer is more and more reliant on agricultural science and data analysis, with the family farm having to be run like a business. It is no longer sufficient to rely on rule of thumb, simple experience or heirloom methods to remain competitive and effective as operating costs increase, labour becomes scarcer, drought more common and conditions more variable.
 
-To this end, being able to monitor and record measurements from a wide variety of sensors over a wide geographical area presents a great opportunity to further enhance farming methods, by finding better answers to questions such as:
-* what crop should I plant in that paddock this time?
-* should I rest that paddock?
-* when should I sow?
-* when should I apply fertiliser?
-* when should I reap?
-* how has the performance of a particular crop trended under particular conditions over the last 5 years?
-* what $$$ return will I get if I plant these crops over this area?
-
 ## Problem: *Should I reap or should I wait?* - confirming localised weather conditions prior to reaping
 
 To remain safe a farmer must rely on more than official weather forecasts:
@@ -51,6 +42,23 @@ To remain safe a farmer must rely on more than official weather forecasts:
 * This usually means driving out, which consumes time, and fuel. Paddocks in Australia are often geographically disparate as well as large.
 
 ## Problem: Recording and analysis of multiple sensor inputs
+
+Being able to monitor and record measurements from a wide variety of sensors over a wide geographical area presents a great opportunity to further enhance farming methods, by finding better answers to questions such as:
+* what crop should I plant in that paddock this time?
+* should I rest that paddock?
+* when should I sow?
+* when should I apply fertiliser?
+* when should I reap?
+* how has the performance of a particular crop trended under particular conditions over the last 5 years?
+* what $$$ return will I get if I plant these crops over this area?
+
+To be sustainable the sensor network is constrained:
+* sensors need to be self sufficient for power : there is no mains power in a paddock.
+* sensors need to be independent of commercial telecommunication networks
+** even if the cost were relatively cheap ($10/pa for a sim card?) the management of 10's or 100's doesnt scale
+* sensors need to be robust : farms are hard on equipment, and paddocks exposed to all kinds of eather
+* sensors need to be maintainable : using cheap parts and open software protocols allows farmers to make on the run repairs
+* sensors need to be accessible: on the ground information via an NFC-tap would be incredibly useful
 
 # Solution : sentrifarm
 
@@ -65,3 +73,13 @@ Along with the warning sensors, additional information including rainfall, dew, 
 Further, by recording previously overlooked sensors and data at regular intervals including across the day, this provides for the possibility of finding hitherto-unknown correlations between different sensors and new opportunities for innovation in farm management.
 
 Other applications, such as distributed pollen recording and smoke detection, may also become possible, subject to development of proper analysis methods.
+
+# Business Case
+
+Sentrifarm addresses a gap in the market, through both cheaper hardware costs and open design.
+
+Many existing farm systems are:
+* very expensive for what you get, or
+* use proprietary protocols and lock up data away from the farmer, or
+
+Farmers are very busy people.  Some may have the skill, motivation or expertise to maintain a sensor deployment, and the open source nature of the system provides that opportunity for them.  For the vast majority, they would rather outsouce the installation and ongoing service, providing a local business opportunity on the ground that is harder to be stolen or locked up by a multinational, unlike large scale tractor systems.
