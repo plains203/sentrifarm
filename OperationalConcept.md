@@ -5,6 +5,7 @@ Sentrifarm will provide a simple and effective management tool to Australia farm
 * sentrifarm provides realtime and historical data on weather, crop and astronomical conditions
 * sentrifarm is self sufficient for power (solar) and communications (not reliant on the GSM network)
 * sentrifarm is designed to be modular and expandable
+* sentrifarm is designed to be interfaced with other systems
 
 # Background
 Farming in Australia presents many unique challenges.
